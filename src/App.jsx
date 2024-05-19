@@ -69,9 +69,16 @@ function App() {
 	};
 
 	const addProfile = (profile) => {
-		console.table("Before adding profile", profileData);
-		const updatedData = [...profileData, profile];
-		setProfileData(updatedData);
+		const isDuplicate = profileData.some(
+			(existingProfile) => existingProfile.profileUrl === profile.profileUrl
+		);
+
+		if (isDuplicate) {
+			alert("This profile is already in your list.");
+		} else {
+			const updatedData = [...profileData, profile];
+			setProfileData(updatedData);
+		}
 	};
 
 	const handleAddProfile = async () => {
