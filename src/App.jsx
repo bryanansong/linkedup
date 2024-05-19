@@ -44,45 +44,75 @@ function App() {
 		setProfileData(updatedData);
 	};
 
-	const handleAddProfile = () => {
-		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-			const currentTab = tabs[0];
-			if (currentTab) {
-				chrome.scripting.executeScript(
-					{
-						target: { tabId: currentTab.id },
-						func: () => {
-							const nameSelector =
-								"#profile-content > div > div.scaffold-layout.scaffold-layout--breakpoint-xl.scaffold-layout--main-aside.scaffold-layout--reflow.pv-profile.pvs-loader-wrapper__shimmer--animate > div > div > main > section.artdeco-card.hvmQIhWktYNWaSihuubCaqSbELUrJIvSA > div.ph5.pb5 > div.mt2.relative > div:nth-child(1) > div.jkTZSGDHrUQbqICGKZNwfcUnWKwEOqtdk > span > a > h1";
-							const imageSelector = "#ember35 img";
-							const name = document
-								.querySelector(nameSelector)
-								?.textContent.trim();
-							const imageUrl =
-								document.querySelector(imageSelector)?.src;
-							return { name, imageUrl };
-						},
-					},
-					(injectionResults) => {
-						for (const frameResult of injectionResults) {
-							const { name, imageUrl } = frameResult.result;
-							if (name && imageUrl) {
-								const newProfileData = {
-									name,
-									profileUrl: currentTab.url,
-									imageUrl,
-								};
-								setProfileData([...profileData, newProfileData]);
-							} else {
-								alert(
-									"Unable to extract profile data. Make sure you are on a LinkedIn profile page."
-								);
-							}
-						}
-					}
-				);
-			}
+	const queryCurrentTab = async () => {
+		const [tab] = await chrome.tabs.query({
+			active: true,
+			lastFocusedWindow: true,
 		});
+		return tab;
+	};
+
+	const extractProfileData = async (tabId) => {
+		return new Promise((resolve, reject) => {
+			chrome.scripting.executeScript(
+				{
+					target: { tabId },
+					func: () => {
+						const nameSelector =
+							"#profile-content > div > div.scaffold-layout.scaffold-layout--breakpoint-xl.scaffold-layout--main-aside.scaffold-layout--reflow.pv-profile.pvs-loader-wrapper__shimmer--animate > div > div > main > section.artdeco-card.hvmQIhWktYNWaSihuubCaqSbELUrJIvSA > div.ph5.pb5 > div.mt2.relative > div:nth-child(1) > div.jkTZSGDHrUQbqICGKZNwfcUnWKwEOqtdk > span > a > h1";
+						const imageSelector = ".POZmPZIwuGBDFUytXfVVSpsZBfRBqeUkk";
+						const name = document
+							.querySelector(nameSelector)
+							?.textContent.trim();
+						const imageUrl = document.querySelector(imageSelector)?.src;
+						return { name, imageUrl };
+					},
+				},
+				(injectionResults) => {
+					if (chrome.runtime.lastError) {
+						console.error(chrome.runtime.lastError);
+						reject(chrome.runtime.lastError);
+					} else if (injectionResults && injectionResults[0]?.result) {
+						resolve(injectionResults[0].result);
+					} else {
+						console.error("No results returned from script injection.");
+						reject(
+							new Error("No results returned from script injection.")
+						);
+					}
+				}
+			);
+		});
+	};
+
+	const addProfile = (profile) => {
+		setProfileData((prevData) => [...prevData, profile]);
+	};
+
+	const handleAddProfile = async () => {
+		try {
+			const currentTab = await queryCurrentTab();
+			if (currentTab) {
+				console.log("Current Tab is valid, extracting profile data...");
+				const { name, imageUrl } = await extractProfileData(currentTab.id);
+				if (name && imageUrl) {
+					const newProfile = {
+						name,
+						profileUrl: currentTab.url,
+						imageUrl,
+					};
+					console.log("Adding new profile...", newProfile);
+					addProfile(newProfile);
+				} else {
+					alert(
+						"Unable to extract profile data. Make sure you are on a LinkedIn profile page."
+					);
+				}
+			}
+		} catch (error) {
+			console.error("Failed to add profile:", error);
+		}
+		console.log("Done adding profile!!");
 	};
 
 	return (
