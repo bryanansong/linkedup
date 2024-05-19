@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-// Correct initial profile data with correct property name and unique URLs
 const initialProfileData = [];
 
 function App() {
@@ -85,7 +84,6 @@ function App() {
 		try {
 			const currentTab = await queryCurrentTab();
 			if (currentTab) {
-				console.log("Current Tab is valid, extracting profile data...");
 				const { name, imageUrl } = await extractProfileData(currentTab.id);
 				if (name && imageUrl) {
 					const newProfile = {
@@ -93,7 +91,6 @@ function App() {
 						profileUrl: currentTab.url,
 						imageUrl,
 					};
-					console.log("Adding new profile...", newProfile);
 					addProfile(newProfile);
 				} else {
 					alert(
@@ -104,7 +101,6 @@ function App() {
 		} catch (error) {
 			console.error("Failed to add profile:", error);
 		}
-		console.log("Done adding profile!!");
 	};
 
 	return (
@@ -140,10 +136,11 @@ function App() {
 					</div>
 				))}
 				{profileData.length < 6 && (
-					<div className="add-profile">
-						<button onClick={handleAddProfile}>
-							Add current profile
-						</button>
+					<div
+						className="add-profile"
+						onClick={handleAddProfile}
+					>
+						<button>Add current profile</button>
 					</div>
 				)}
 			</div>
