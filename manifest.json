@@ -9,5 +9,6 @@
 			"matches": ["https://www.linkedin.com/in/*"],
 			"js": ["src/content.js"]
 		}
-	]
+	],
+	"host-permissions": ["https://www.linkedin.com/in/*"]
 }
