@@ -105,7 +105,10 @@ function App() {
 						<span>{profile.name}</span>
 						<button
 							className="delete-button"
-							onClick={() => handleDelete(index)}
+							onClick={(e) => {
+								e.stopPropagation();
+								handleDelete(index);
+							}}
 						>
 							<img
 								src="src/assets/trash.png"
