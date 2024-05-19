@@ -2,26 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 // Correct initial profile data with correct property name and unique URLs
-const initialProfileData = [
-	{
-		name: "Bryan Ansong",
-		profileUrl: "https://www.linkedin.com/in/bryanansong/",
-		imageUrl:
-			"https://media.licdn.com/dms/image/D4E03AQGRu16ltFUVVw/profile-displayphoto-shrink_400_400/0/1713572003638?e=1721865600&v=beta&t=91Hn3aF77oVmBo6HP1_dioZge5mv7x5LxClAzh2CdYc",
-	},
-	{
-		name: "Micah Fossett",
-		profileUrl: "https://www.linkedin.com/in/micahfossett/",
-		imageUrl:
-			"https://media.licdn.com/dms/image/D5603AQGa0iDn8kPNMg/profile-displayphoto-shrink_400_400/0/1683279740366?e=1721865600&v=beta&t=yFA3fWNsAQbDMYUXZeJNExfkUgQcfhy1_UslzNVYhDg",
-	},
-	{
-		name: "Edith Kao",
-		profileUrl: "https://www.linkedin.com/in/edith-kao/",
-		imageUrl:
-			"https://media.licdn.com/dms/image/D4E03AQGK0VWqp-B3XA/profile-displayphoto-shrink_400_400/0/1713902585796?e=1721865600&v=beta&t=g1OY5vHbmzdJDNXL7DtESCnLDRpju3hxbVXZ0x9_QRo",
-	},
-];
+const initialProfileData = [];
 
 function App() {
 	const [profileData, setProfileData] = useState(initialProfileData);
@@ -35,7 +16,9 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		chrome.storage.sync.set({ profileData });
+		if (profileData !== initialProfileData) {
+			chrome.storage.sync.set({ profileData });
+		}
 	}, [profileData]);
 
 	const handleDelete = (index) => {
@@ -86,7 +69,9 @@ function App() {
 	};
 
 	const addProfile = (profile) => {
-		setProfileData((prevData) => [...prevData, profile]);
+		console.table("Before adding profile", profileData);
+		const updatedData = [...profileData, profile];
+		setProfileData(updatedData);
 	};
 
 	const handleAddProfile = async () => {
