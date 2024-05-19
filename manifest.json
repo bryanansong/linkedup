@@ -1,0 +1,13 @@
+{
+	"manifest_version": 3,
+	"name": "LinkedUp",
+	"version": "1.0",
+	"action": { "default_popup": "index.html" },
+	"permissions": ["storage", "tabs", "scripting"],
+	"content_scripts": [
+		{
+			"matches": ["https://www.linkedin.com/in/*"],
+			"js": ["src/content.js"]
+		}
+	]
+}
