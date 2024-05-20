@@ -20,6 +20,17 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.logo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo {
+	height: 80px;
+	margin-bottom: 10px;
+}
+
 .text-name {
 	font-size: 15px;
 	font-weight: bold;

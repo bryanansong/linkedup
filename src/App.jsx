@@ -106,7 +106,13 @@ function App() {
 	return (
 		<div className="app">
 			<div className="profile-list">
-				<h1 className="text-heading">LinkedUp</h1>
+				<div className="logo-container">
+					<img
+						className="logo"
+						src="src/assets/Logo.png"
+						alt="LinkedIn"
+					/>
+				</div>
 				{profileData.map((profile, index) => (
 					<div
 						key={index}
