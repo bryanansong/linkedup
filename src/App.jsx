@@ -109,7 +109,7 @@ function App() {
 				<div className="logo-container">
 					<img
 						className="logo"
-						src="src/assets/Logo.png"
+						src="https://github.com/bryanansong/linkedup/blob/main/src/assets/Logo.png?raw=true"
 						alt="LinkedIn"
 					/>
 				</div>
@@ -135,7 +135,7 @@ function App() {
 							}}
 						>
 							<img
-								src="src/assets/trash.svg"
+								src="https://raw.githubusercontent.com/bryanansong/linkedup/8c22c7c4f7a2c0de0431ab4970fc71542d12630c/src/assets/trash.svg"
 								alt="Delete"
 							/>
 						</button>
