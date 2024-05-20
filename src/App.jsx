@@ -106,7 +106,7 @@ function App() {
 	return (
 		<div className="app">
 			<div className="profile-list">
-				<h1>LinkedUp</h1>
+				<h1 className="text-heading">LinkedUp</h1>
 				{profileData.map((profile, index) => (
 					<div
 						key={index}
@@ -120,7 +120,7 @@ function App() {
 							alt={profile.name}
 							className="profile-image"
 						/>
-						<span>{profile.name}</span>
+						<span className="text-name">{profile.name}</span>
 						<button
 							className="delete-button"
 							onClick={(e) => {
@@ -129,7 +129,7 @@ function App() {
 							}}
 						>
 							<img
-								src="src/assets/trash.png"
+								src="src/assets/trash.svg"
 								alt="Delete"
 							/>
 						</button>
