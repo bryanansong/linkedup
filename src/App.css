@@ -1,17 +1,17 @@
 .app {
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	height: 100vh;
+	align-items: start;
+	height: max-content;
 	background-color: #f0f0f0;
 }
 
 .profile-list {
 	width: 300px;
-	background-color: white;
-	border-radius: 10px;
+	background-color: #efefef;
+	border-radius: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	padding: 20px;
+	padding: 10px 20px 20px 20px;
 }
 
 h1 {
@@ -20,21 +20,31 @@ h1 {
 	margin-bottom: 20px;
 }
 
+.text-name {
+	font-size: 15px;
+	font-weight: bold;
+	display: flex;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+
 .profile-card {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 10px;
+	padding: 5px;
 	border: 2px solid #000;
-	border-radius: 10px;
+	border-radius: 13px;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 .profile-image {
 	border-radius: 50%;
-	width: 40px;
-	height: 40px;
-	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .delete-button {
@@ -44,17 +54,17 @@ h1 {
 }
 
 .delete-button img {
-	width: 20px;
-	height: 20px;
+	width: 25px;
+	height: 25px;
 }
 
 .add-profile {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 10px;
+	padding: 15px;
 	border: 2px dashed #ccc;
-	border-radius: 10px;
+	border-radius: 12px;
 	margin-top: 10px;
 	cursor: pointer;
 }
