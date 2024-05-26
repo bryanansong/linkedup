@@ -32,7 +32,12 @@ const ProfileCard = ({ profile, index, handleDelete }) => {
 					className="profile-image"
 				/>
 			)}
-			<span className="text-name">{profile.name}</span>
+			<div className="text-container">
+				<p className="text-name">{profile.name}</p>
+				{/* TODO: Add company name */}
+				{/* <p className="text-position">{profile.company}</p> */}
+				<p className="text-position">Company - Position</p>
+			</div>
 			<button
 				className="delete-button"
 				onClick={(e) => {
