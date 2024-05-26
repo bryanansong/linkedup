@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "../App.css";
 
-const CommentModal = ({ profile, closeCommentModal }) => {
-	const [comment, setComment] = useState("");
+const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) => {
+	const [comment, setComment] = useState(profile?.comment || "");
 
 	const handleCommentChange = (e) => {
 		setComment(e.target.value);
@@ -12,6 +12,8 @@ const CommentModal = ({ profile, closeCommentModal }) => {
 		e.stopPropagation();
 		e.preventDefault();
 		// Add your logic to handle the comment submission
+		profile.comment = comment;
+		updateProfileData(profile, index);
 		console.log(`Comment for ${profile.name}: ${comment}`);
 		closeCommentModal();
 	};

@@ -28,6 +28,12 @@ function App() {
 		setProfileData(updatedData);
 	};
 
+	const updateProfileData = (index, newProfileData) => {
+		const updatedData = [...profileData];
+		updatedData[index] = newProfileData;
+		setProfileData(updatedData);
+	};
+
 	const queryCurrentTab = async () => {
 		const [tab] = await chrome.tabs.query({
 			active: true,
@@ -124,6 +130,7 @@ function App() {
 						key={index}
 						index={index}
 						handleDelete={handleDelete}
+						updateProfileData={updateProfileData}
 						profile={profile}
 					/>
 				))}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../App.css";
 import CommentModal from "./CommentModal";
 
-const ProfileCard = ({ profile, index, handleDelete }) => {
+const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 	const [commentModal, setCommentModal] = useState(false);
 
 	const openCommentModal = () => {
@@ -106,7 +106,9 @@ const ProfileCard = ({ profile, index, handleDelete }) => {
 			{commentModal && (
 				<CommentModal
 					profile={profile}
+					index={index}
 					closeCommentModal={closeCommentModal}
+					updateProfileData={updateProfileData}
 				/>
 			)}
 		</div>
