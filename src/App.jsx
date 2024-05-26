@@ -41,8 +41,13 @@ function App() {
 					target: { tabId },
 					func: () => {
 						const nameSelector =
-							"#profile-content > div > div.scaffold-layout.scaffold-layout--breakpoint-xl.scaffold-layout--main-aside.scaffold-layout--reflow.pv-profile.pvs-loader-wrapper__shimmer--animate > div > div > main > section.artdeco-card.hvmQIhWktYNWaSihuubCaqSbELUrJIvSA > div.ph5.pb5 > div.mt2.relative > div:nth-child(1) > div.jkTZSGDHrUQbqICGKZNwfcUnWKwEOqtdk > span > a > h1";
-						const imageSelector = ".POZmPZIwuGBDFUytXfVVSpsZBfRBqeUkk";
+							"#profile-content > div > div > div > div > main > section > div > div > div > div > span > a > h1";
+						const imageSelector =
+							"#profile-content > div > div > div > div > main > section > div > div > div > div > button > img";
+						// TODO: Fix company selector
+						const companySelector =
+							"#profile-content > div > div > div > div > main > section > div > ul > li > div > div > div > div > span > span";
+
 						const name = document
 							.querySelector(nameSelector)
 							?.textContent.trim();
@@ -142,11 +147,11 @@ function App() {
 								/>
 							</svg>
 						) : (
-						<img
-							src={profile.imageUrl}
-							alt={profile.name}
-							className="profile-image"
-						/>
+							<img
+								src={profile.imageUrl}
+								alt={profile.name}
+								className="profile-image"
+							/>
 						)}
 						<span className="text-name">{profile.name}</span>
 						<button
@@ -156,10 +161,21 @@ function App() {
 								handleDelete(index);
 							}}
 						>
-							<img
-								src="https://raw.githubusercontent.com/bryanansong/linkedup/8c22c7c4f7a2c0de0431ab4970fc71542d12630c/src/assets/trash.svg"
-								alt="Delete"
-							/>
+							<svg
+								width="25"
+								height="25"
+								viewBox="0 0 25 25"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M16.6667 6.25001V5.41668C16.6667 4.2499 16.6667 3.66651 16.4396 3.22086C16.2399 2.82886 15.9212 2.51015 15.5291 2.31041C15.0835 2.08334 14.5001 2.08334 13.3333 2.08334H11.6667C10.4999 2.08334 9.9165 2.08334 9.47085 2.31041C9.07885 2.51015 8.76014 2.82886 8.5604 3.22086C8.33333 3.66651 8.33333 4.2499 8.33333 5.41668V6.25001M10.4167 11.9792V17.1875M14.5833 11.9792V17.1875M3.125 6.25001H21.875M19.7917 6.25001V17.9167C19.7917 19.6668 19.7917 20.5419 19.4511 21.2104C19.1515 21.7984 18.6734 22.2765 18.0854 22.5761C17.4169 22.9167 16.5418 22.9167 14.7917 22.9167H10.2083C8.45817 22.9167 7.58309 22.9167 6.91461 22.5761C6.32661 22.2765 5.84854 21.7984 5.54894 21.2104C5.20833 20.5419 5.20833 19.6668 5.20833 17.9167V6.25001"
+									stroke="#EE2D2D"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
 						</button>
 					</div>
 				))}
