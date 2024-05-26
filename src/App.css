@@ -7,15 +7,10 @@
 }
 
 .profile-list {
-	width: 340px;
+	width: 100%;
+	min-width: 340px;
 	background-color: #ffffff;
 	padding: 10px 20px 20px 20px;
-}
-
-h1 {
-	text-align: center;
-	font-size: 24px;
-	margin-bottom: 20px;
 }
 
 .logo-container {
@@ -53,13 +48,19 @@ h1 {
 
 .profile-card {
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	flex-direction: column;
 	padding: 5px;
 	margin-bottom: 10px;
 	border-radius: 13px;
 	border: 2px black solid;
 	background: #ffffff;
+}
+
+.profile-content {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
 	cursor: pointer;
 }
 
@@ -76,9 +77,10 @@ h1 {
 	cursor: pointer;
 }
 
-.delete-button img {
-	width: 25px;
-	height: 25px;
+.comment-button {
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .add-profile {
@@ -98,4 +100,49 @@ h1 {
 	color: #888;
 	font-size: 16px;
 	cursor: pointer;
+}
+
+.comment-modal {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid #212121;
+	border-radius: 8px;
+	margin: 5px;
+}
+
+.comment-textarea {
+	display: flex;
+	margin-top: 3px;
+	height: 70px;
+	width: 98%;
+	border-radius: 8px;
+	font-family: sans-serif;
+	font-size: 14px;
+	border: none;
+	outline: none;
+	resize: none;
+}
+
+.submit-button {
+	display: flex;
+	background: none;
+	flex-direction: row;
+	border: none;
+	cursor: pointer;
+	width: 60px;
+	height: 25px;
+	padding-bottom: 3px;
+	border-radius: 16px;
+	margin-bottom: 5px;
+	background-color: #46db55;
+}
+
+.submit-button-text {
+	display: flex;
+	flex: 1;
+	color: white;
+	font-size: 14px;
+	justify-content: center;
+	align-items: center;
 }
