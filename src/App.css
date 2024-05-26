@@ -29,12 +29,26 @@ h1 {
 	margin-bottom: 10px;
 }
 
+.text-container {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-left: 5px;
+}
+
 .text-name {
-	font-size: 15px;
-	font-weight: bold;
+	font-size: 17px;
 	display: flex;
 	text-overflow: ellipsis;
-	text-align: center;
+	margin: 0px;
+}
+
+.text-position {
+	font-size: 12px;
+	display: flex;
+	text-overflow: ellipsis;
+	color: #7e7e7e;
+	margin: 0px;
 }
 
 .profile-card {
