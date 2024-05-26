@@ -6,17 +6,28 @@
 	background-color: #ffffff;
 }
 
-.profile-list {
-	width: 100%;
-	min-width: 340px;
-	background-color: #ffffff;
-	padding: 10px 20px 20px 20px;
-}
-
-.logo-container {
+.header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+
+.logo-text {
+	font-size: 40px;
+	color: #1f60c0;
+	font-weight: bolder;
+	font-family: sans-serif;
+	margin: 5px 0px 15px 0px;
+}
+
+.logo-text span {
+	color: #000000;
+}
+
+.profile-list {
+	width: 340px;
+	background-color: #ffffff;
+	padding: 10px 20px 20px 20px;
 }
 
 .logo {
