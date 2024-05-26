@@ -29,12 +29,16 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 					onChange={handleCommentChange}
 					maxLength={150}
 				/>
-				<div
-					type="submit"
-					className="submit-button"
-					onClick={handleCommentSubmit}
-				>
-					<p className="submit-button-text">Done</p>
+				<div className="textarea-functionalities">
+					<div className="empty-space"></div>
+					<p className="comment-length">{comment.length}/150</p>
+					<div
+						type="submit"
+						className="submit-button"
+						onClick={handleCommentSubmit}
+					>
+						<p className="submit-button-text">Done</p>
+					</div>
 				</div>
 			</form>
 		</div>
