@@ -8,13 +8,20 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 		setComment(e.target.value);
 	};
 
+	const handleDiscard = (e) => {
+		e.stopPropagation();
+		setComment("");
+		profile.comment = "";
+		updateProfileData(profile, index);
+		closeCommentModal();
+	};
+
 	const handleCommentSubmit = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
-		// Add your logic to handle the comment submission
+
 		profile.comment = comment;
 		updateProfileData(profile, index);
-		console.log(`Comment for ${profile.name}: ${comment}`);
 		closeCommentModal();
 	};
 
@@ -33,7 +40,12 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 					<div className="empty-space"></div>
 					<p className="comment-length">{comment.length}/150</p>
 					<div
-						type="submit"
+						className="discard-button"
+						onClick={handleDiscard}
+					>
+						<p className="submit-button-text">Discard</p>
+					</div>
+					<div
 						className="submit-button"
 						onClick={handleCommentSubmit}
 					>

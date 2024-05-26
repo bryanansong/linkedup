@@ -126,7 +126,7 @@
 .comment-textarea {
 	display: flex;
 	margin-top: 3px;
-	height: 70px;
+	height: 73px;
 	width: 98%;
 	border-radius: 8px;
 	font-family: sans-serif;
@@ -141,7 +141,7 @@
 	display: flex;
 	flex-direction: row;
 	width: 95%;
-	gap: 15px;
+	gap: 10px;
 	align-items: baseline;
 }
 
@@ -154,7 +154,8 @@
 	color: #7e7e7e;
 }
 
-.submit-button {
+.submit-button,
+.discard-button {
 	display: flex;
 	background: none;
 	flex-direction: row;
@@ -163,9 +164,13 @@
 	width: 60px;
 	height: 25px;
 	padding-bottom: 3px;
-	border-radius: 16px;
+	border-radius: 8px;
 	margin-bottom: 5px;
 	background-color: #46db55;
+}
+
+.discard-button {
+	background-color: #ee2d2d;
 }
 
 .submit-button-text {
@@ -173,6 +178,7 @@
 	flex: 1;
 	color: white;
 	font-size: 14px;
+	font-weight: 500;
 	justify-content: center;
 	align-items: center;
 }
