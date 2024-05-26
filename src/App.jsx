@@ -47,6 +47,9 @@ function App() {
 							.querySelector(nameSelector)
 							?.textContent.trim();
 						const imageUrl = document.querySelector(imageSelector)?.src;
+						const company =
+							document.querySelector(companySelector)?.textContent;
+						// TODO: Make sure to return company
 						return { name, imageUrl };
 					},
 				},
@@ -121,11 +124,30 @@ function App() {
 							chrome.tabs.create({ url: profile.profileUrl });
 						}}
 					>
+						{profile.imageUrl ===
+						"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" ? (
+							<svg
+								width="50"
+								height="50"
+								viewBox="0 0 50 50"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<path
+									d="M41.6666 43.75C41.6666 40.8426 41.6666 39.3889 41.3078 38.2059C40.4998 35.5426 38.4156 33.4584 35.7523 32.6505C34.5694 32.2917 33.1157 32.2917 30.2082 32.2917H19.7916C16.8842 32.2917 15.4304 32.2917 14.2475 32.6505C11.5842 33.4584 9.5 35.5426 8.69208 38.2059C8.33325 39.3889 8.33325 40.8426 8.33325 43.75M34.3749 15.625C34.3749 20.8027 30.1776 25 24.9999 25C19.8222 25 15.6249 20.8027 15.6249 15.625C15.6249 10.4473 19.8222 6.25 24.9999 6.25C30.1776 6.25 34.3749 10.4473 34.3749 15.625Z"
+									stroke="black"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+								/>
+							</svg>
+						) : (
 						<img
 							src={profile.imageUrl}
 							alt={profile.name}
 							className="profile-image"
 						/>
+						)}
 						<span className="text-name">{profile.name}</span>
 						<button
 							className="delete-button"
