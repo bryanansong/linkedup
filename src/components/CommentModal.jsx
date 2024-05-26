@@ -32,7 +32,6 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 				<div
 					type="submit"
 					className="submit-button"
-					// TODO: Add onClick event handler
 					onClick={handleCommentSubmit}
 				>
 					<p className="submit-button-text">Done</p>

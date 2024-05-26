@@ -52,7 +52,6 @@ function App() {
 							"#profile-content > div > div > div > div > main > section > div > div > div > div > span > a > h1";
 						const imageSelector =
 							"#profile-content > div > div > div > div > main > section > div > div > div > div > button > img";
-						// TODO: Fix company selector
 						const companySelector =
 							"#profile-content > div > div > div > div > main > section > div > ul > li > div > div > div > div > span > span";
 
@@ -62,8 +61,7 @@ function App() {
 						const imageUrl = document.querySelector(imageSelector)?.src;
 						const company =
 							document.querySelector(companySelector)?.textContent;
-						// TODO: Make sure to return company
-						return { name, imageUrl };
+						return { name, imageUrl, company };
 					},
 				},
 				(injectionResults) => {
@@ -73,7 +71,7 @@ function App() {
 					} else if (injectionResults && injectionResults[0]?.result) {
 						resolve(injectionResults[0].result);
 					} else {
-						console.error("No results returned from script injection.");
+						console.error("Could not extract profile data.");
 						reject(
 							new Error("No results returned from script injection.")
 						);
@@ -100,12 +98,16 @@ function App() {
 		try {
 			const currentTab = await queryCurrentTab();
 			if (currentTab) {
-				const { name, imageUrl } = await extractProfileData(currentTab.id);
+				const { name, imageUrl, company } = await extractProfileData(
+					currentTab.id
+				);
 				if (name && imageUrl) {
 					const newProfile = {
 						name,
 						profileUrl: currentTab.url,
 						imageUrl,
+						company,
+						comment: "",
 					};
 					addProfile(newProfile);
 				} else {

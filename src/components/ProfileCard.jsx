@@ -47,12 +47,10 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 				)}
 				<div className="text-container">
 					<p className="text-name">{profile.name}</p>
-					{/* TODO: Add company name */}
-					{/* <p className="text-position">{profile.company}</p> */}
-					<p className="text-position">Company - Position</p>
+					<p className="text-position">{profile.company}</p>
 				</div>
 				<div className="buttons">
-					{!commentModal ? (
+					{!commentModal && (
 						<button
 							className="comment-button"
 							onClick={(e) => {
@@ -75,8 +73,6 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 								/>
 							</svg>
 						</button>
-					) : (
-						<></>
 					)}
 					<button
 						className="delete-button"
