@@ -1,6 +1,6 @@
 import "../App.css";
 
-const ProfileCard = ({ profile }) => {
+const ProfileCard = ({ profile, index, handleDelete }) => {
 	return (
 		<div
 			className="profile-card"

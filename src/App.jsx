@@ -125,6 +125,8 @@ function App() {
 				{profileData.map((profile, index) => (
 					<ProfileCard
 						key={index}
+						index={index}
+						handleDelete={handleDelete}
 						profile={profile}
 					/>
 				))}
