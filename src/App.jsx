@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import ProfileCard from "./components/ProfileCard";
+import Header from "./components/Header";
 
 const initialProfileData = [];
 
@@ -115,12 +116,8 @@ function App() {
 	return (
 		<div className="app">
 			<div className="profile-list">
-				<div className="logo-container">
-					<img
-						className="logo"
-						src="https://github.com/bryanansong/linkedup/blob/main/src/assets/Logo.png?raw=true"
-						alt="LinkedIn"
-					/>
+				<div className="header">
+					<Header />
 				</div>
 				{profileData.map((profile, index) => (
 					<ProfileCard
