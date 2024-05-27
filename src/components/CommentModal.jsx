@@ -37,7 +37,7 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 					maxLength={150}
 				/>
 				<div className="textarea-functionalities">
-					<div className="empty-space"></div>
+					<div className="empty-space" />
 					<p className="comment-length">{comment.length}/150</p>
 					<div
 						className="discard-button"
