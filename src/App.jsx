@@ -7,6 +7,27 @@ const initialProfileData = [];
 
 function App() {
 	const [profileData, setProfileData] = useState(initialProfileData);
+	const toastOptions = {
+		className: "",
+		style: {
+			fontSize: "15px",
+			fontWeight: "bold",
+		},
+		success: {
+			style: {
+				background: "#246a2bab",
+				border: "1px solid #46db55",
+				color: "white",
+			},
+		},
+		error: {
+			style: {
+				background: "#621616aa",
+				border: "1px solid #ee2d2d",
+				color: "white",
+			},
+		},
+	};
 
 	useEffect(() => {
 		chrome.storage.sync.get("profileData", (data) => {
@@ -155,27 +176,7 @@ function App() {
 				containerStyle={{
 					top: 45,
 				}}
-				toastOptions={{
-					className: "",
-					style: {
-						fontSize: "15px",
-						fontWeight: "bold",
-					},
-					success: {
-						style: {
-							background: "#246a2bab",
-							border: "1px solid #46db55",
-							color: "white",
-						},
-					},
-					error: {
-						style: {
-							background: "#621616aa",
-							border: "1px solid #ee2d2d",
-							color: "white",
-						},
-					},
-				}}
+				toastOptions={toastOptions}
 			/>
 			<div className="profile-list">
 				<div className="header">
