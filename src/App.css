@@ -113,6 +113,19 @@
 	cursor: pointer;
 }
 
+.add-profile:hover button {
+	color: black;
+}
+
+.add-profile:hover {
+	border: 2px dashed #000000bd;
+}
+
+.add-profile:active {
+	transform: translateY(3px);
+	transition: 100ms;
+}
+
 .comment-modal {
 	display: flex;
 	flex-direction: column;
