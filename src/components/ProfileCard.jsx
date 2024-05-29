@@ -78,6 +78,7 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 						className="delete-button"
 						onClick={(e) => {
 							e.stopPropagation();
+							closeCommentModal();
 							handleDelete(index);
 						}}
 					>
