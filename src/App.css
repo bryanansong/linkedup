@@ -182,3 +182,32 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.undo-delete-button {
+	display: flex;
+	background: none;
+	flex-direction: row;
+	border: none;
+	cursor: pointer;
+	justify-content: center;
+	margin-top: 5px;
+	padding: 3px 10px;
+	border-radius: 3px;
+	background-color: #07dc1c6f;
+
+	background: #07dc1c;
+	box-shadow: 20px 20px 60px #03580b, -20px -20px 60px #0bff2d;
+
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.profile-deleted-toast {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	margin: 5px;
+}

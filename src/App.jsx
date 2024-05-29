@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import ProfileCard from "./components/ProfileCard";
 import Header from "./components/Header";
 import toast, { Toaster } from "react-hot-toast";
@@ -25,9 +24,34 @@ function App() {
 
 	const handleDelete = (index) => {
 		const updatedData = [...profileData];
-		updatedData.splice(index, 1);
+		const profileToDelete = updatedData.splice(index, 1)[0];
+
 		setProfileData(updatedData);
-		toast.success("Profile deleted", { icon: "🗑️" });
+
+		toast.success(
+			(t) => (
+				<div className="profile-deleted-toast">
+					<span>Profile deleted</span>
+					<button
+						className="undo-delete-button"
+						onClick={() => {
+							// Restore the deleted profile
+							const restoredData = [...updatedData];
+							restoredData.splice(index, 0, profileToDelete);
+							setProfileData(restoredData);
+							toast.dismiss(t.id);
+							toast.success("Profile restored", { icon: "🔄" });
+						}}
+					>
+						Undo
+					</button>
+				</div>
+			),
+			{
+				duration: 4500,
+				icon: "🗑️",
+			}
+		);
 	};
 
 	const updateProfileData = (index, newProfileData) => {
