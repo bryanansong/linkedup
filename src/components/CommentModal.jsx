@@ -37,7 +37,7 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 			<form className="comment-modal">
 				<textarea
 					className="comment-textarea"
-					placeholder="Write a comment"
+					placeholder="Add a note..."
 					value={comment}
 					type="text"
 					onChange={handleCommentChange}
