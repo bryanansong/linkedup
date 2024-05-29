@@ -1,12 +1,33 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import ProfileCard from "./components/ProfileCard";
 import Header from "./components/Header";
+import toast, { Toaster } from "react-hot-toast";
 
 const initialProfileData = [];
 
 function App() {
 	const [profileData, setProfileData] = useState(initialProfileData);
+	const toastOptions = {
+		className: "",
+		style: {
+			fontSize: "15px",
+			fontWeight: "bold",
+		},
+		success: {
+			style: {
+				background: "#246a2bab",
+				border: "1px solid #46db55",
+				color: "white",
+			},
+		},
+		error: {
+			style: {
+				background: "#621616aa",
+				border: "1px solid #ee2d2d",
+				color: "white",
+			},
+		},
+	};
 
 	useEffect(() => {
 		chrome.storage.sync.get("profileData", (data) => {
@@ -24,8 +45,34 @@ function App() {
 
 	const handleDelete = (index) => {
 		const updatedData = [...profileData];
-		updatedData.splice(index, 1);
+		const profileToDelete = updatedData.splice(index, 1)[0];
+
 		setProfileData(updatedData);
+
+		toast.success(
+			(t) => (
+				<div className="profile-deleted-toast">
+					<span>Profile deleted</span>
+					<button
+						className="undo-delete-button"
+						onClick={() => {
+							// Restore the deleted profile
+							const restoredData = [...updatedData];
+							restoredData.splice(index, 0, profileToDelete);
+							setProfileData(restoredData);
+							toast.dismiss(t.id);
+							toast.success("Profile restored", { icon: "🔄" });
+						}}
+					>
+						Undo
+					</button>
+				</div>
+			),
+			{
+				duration: 4500,
+				icon: "🗑️",
+			}
+		);
 	};
 
 	const updateProfileData = (index, newProfileData) => {
@@ -71,10 +118,7 @@ function App() {
 					} else if (injectionResults && injectionResults[0]?.result) {
 						resolve(injectionResults[0].result);
 					} else {
-						console.error("Could not extract profile data.");
-						reject(
-							new Error("No results returned from script injection.")
-						);
+						toast.error("Could not extract profile data.");
 					}
 				}
 			);
@@ -87,10 +131,11 @@ function App() {
 		);
 
 		if (isDuplicate) {
-			alert("This profile is already in your list.");
+			toast.error("You've already added this profile");
 		} else {
 			const updatedData = [...profileData, profile];
 			setProfileData(updatedData);
+			toast.success("Profile added!");
 		}
 	};
 
@@ -111,18 +156,28 @@ function App() {
 					};
 					addProfile(newProfile);
 				} else {
-					alert(
-						"Unable to extract profile data. Make sure you are on a LinkedIn profile page."
+					toast.error(
+						"Unable to add profile. Ensure you're on someone else's LinkedIn page",
+						{
+							duration: 6000,
+						}
 					);
 				}
 			}
 		} catch (error) {
-			console.error("Failed to add profile:", error);
+			toast.error("Failed to add profile");
 		}
 	};
 
 	return (
 		<div className="app">
+			<Toaster
+				reverseOrder={false}
+				containerStyle={{
+					top: 45,
+				}}
+				toastOptions={toastOptions}
+			/>
 			<div className="profile-list">
 				<div className="header">
 					<Header />
