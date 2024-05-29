@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../App.css";
+import toast from "react-hot-toast";
 
 const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) => {
 	const [comment, setComment] = useState(profile?.comment || "");
@@ -13,6 +14,9 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 		setComment("");
 		profile.comment = "";
 		updateProfileData(profile, index);
+		toast.success("Note discarded", {
+			icon: "🗑️",
+		});
 		closeCommentModal();
 	};
 
@@ -22,6 +26,9 @@ const CommentModal = ({ profile, index, closeCommentModal, updateProfileData }) 
 
 		profile.comment = comment;
 		updateProfileData(profile, index);
+		toast.success("Note saved!", {
+			icon: "📝",
+		});
 		closeCommentModal();
 	};
 
