@@ -101,6 +101,7 @@ function App() {
 							"#profile-content > div > div > div > div > main > section > div > div > div > div > button > img";
 						const companySelector =
 							"#profile-content > div > div > div > div > main > section > div > ul > li > div > div > div > div > span > span";
+						const connectionDistanceSelector = "span.dist-value";
 
 						const name = document
 							.querySelector(nameSelector)
@@ -108,7 +109,10 @@ function App() {
 						const imageUrl = document.querySelector(imageSelector)?.src;
 						const company =
 							document.querySelector(companySelector)?.textContent;
-						return { name, imageUrl, company };
+						const connectionDistance = document
+							.querySelector(connectionDistanceSelector)
+							?.textContent.trim();
+						return { name, imageUrl, company, connectionDistance };
 					},
 				},
 				(injectionResults) => {
@@ -143,17 +147,18 @@ function App() {
 		try {
 			const currentTab = await queryCurrentTab();
 			if (currentTab) {
-				const { name, imageUrl, company } = await extractProfileData(
-					currentTab.id
-				);
+				const { name, imageUrl, company, connectionDistance } =
+					await extractProfileData(currentTab.id);
 				if (name && imageUrl) {
 					const newProfile = {
 						name,
 						profileUrl: currentTab.url,
 						imageUrl,
 						company,
+						connectionDistance: connectionDistance,
 						comment: "",
 					};
+					console.log(newProfile);
 					addProfile(newProfile);
 				} else {
 					toast.error(
