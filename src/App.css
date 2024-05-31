@@ -60,7 +60,7 @@
 .profile-card {
 	display: flex;
 	flex-direction: column;
-	padding: 5px;
+	padding: 2px 5px;
 	margin-bottom: 10px;
 	border-radius: 13px;
 	border: 2px black solid;
@@ -77,8 +77,8 @@
 
 .profile-image {
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	margin: 5px;
 }
 
