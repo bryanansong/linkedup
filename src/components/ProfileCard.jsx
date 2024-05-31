@@ -47,7 +47,9 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 				)}
 				<div className="text-container">
 					<p className="text-name">{profile.name}</p>
-					<p className="text-position">{profile.company}</p>
+					<p className="text-position">
+						{profile.company} | {profile.connectionDistance}
+					</p>
 				</div>
 				<div className="buttons">
 					{!commentModal && (
