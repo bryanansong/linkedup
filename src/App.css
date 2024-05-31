@@ -82,7 +82,7 @@
 .profile-card {
 	display: flex;
 	flex-direction: column;
-	padding: 5px;
+	padding: 2px 5px;
 	margin-bottom: 10px;
 	border-radius: 13px;
 	border: 2px black solid;
@@ -99,8 +99,8 @@
 
 .profile-image {
 	border-radius: 50%;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 55px;
 	margin: 5px;
 }
 
@@ -133,6 +133,19 @@
 	color: #707070;
 	font-size: 16px;
 	cursor: pointer;
+}
+
+.add-profile:hover button {
+	color: black;
+}
+
+.add-profile:hover {
+	border: 2px dashed #000000bd;
+}
+
+.add-profile:active {
+	transform: translateY(3px);
+	transition: 100ms;
 }
 
 .comment-modal {
@@ -205,6 +218,35 @@
 	align-items: center;
 }
 
+.undo-delete-button {
+	display: flex;
+	background: none;
+	flex-direction: row;
+	border: none;
+	cursor: pointer;
+	justify-content: center;
+	margin-top: 5px;
+	padding: 7px 10px;
+	border-radius: 3px;
+	background-color: #07dc1c6f;
+
+	background: #07dc1c;
+	box-shadow: 20px 20px 60px #03580b, -20px -20px 60px #0bff2d;
+
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.profile-deleted-toast {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 8px;
+	margin: 5px;
+}
+
 /* Dark mode styles */
 body.dark-mode .logo-text span {
 	color: #ffffff;
@@ -242,4 +284,12 @@ body.dark-mode .comment-textarea {
 
 body.dark-mode .placeholder-image {
 	stroke: white;
+}
+
+body.dark-mode .add-profile:hover button {
+	color: white;
+}
+
+body.dark-mode .add-profile:hover {
+	border: 2px dashed white;
 }

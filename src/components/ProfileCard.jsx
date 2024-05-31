@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../App.css";
 import CommentModal from "./CommentModal";
 
 const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 	const [commentModal, setCommentModal] = useState(false);
+	const profileCardRef = useRef(null);
 
 	const openCommentModal = () => {
 		setCommentModal(true);
@@ -13,12 +14,22 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 		setCommentModal(false);
 	};
 
+	useEffect(() => {
+		if (commentModal && profileCardRef.current) {
+			profileCardRef.current.scrollIntoView({
+				behavior: "smooth",
+				block: "center",
+			});
+		}
+	}, [commentModal]);
+
 	return (
 		<div
 			className="profile-card"
 			onClick={() => {
 				chrome.tabs.create({ url: profile.profileUrl });
 			}}
+			ref={profileCardRef}
 		>
 			<div className="profile-content">
 				{profile.imageUrl ===
@@ -48,7 +59,9 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 				)}
 				<div className="text-container">
 					<p className="text-name">{profile.name}</p>
-					<p className="text-position">{profile.company}</p>
+					<p className="text-position">
+						{profile.company} | {profile.connectionDistance}
+					</p>
 				</div>
 				<div className="buttons">
 					{!commentModal && (
@@ -79,6 +92,7 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 						className="delete-button"
 						onClick={(e) => {
 							e.stopPropagation();
+							closeCommentModal();
 							handleDelete(index);
 						}}
 					>
