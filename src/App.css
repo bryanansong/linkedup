@@ -5,33 +5,33 @@
 	align-items: start;
 	height: max-content;
 	background-color: #ffffff;
-  }
-  
-  .header-container {
+}
+
+.header-container {
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 20px; /* Add some padding for better spacing */
-  }
-  
-  .header {
+}
+
+.header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	position: relative;
-  }
-  
-  .dark-mode-toggle {
+}
+
+.dark-mode-toggle {
 	position: absolute;
 	left: 0;
 	background: none;
 	border: none;
 	cursor: pointer;
-  }
-  
-  .logo-text {
+}
+
+.logo-text {
 	font-size: 40px;
 	color: #1f60c0;
 	font-weight: bolder;
@@ -39,47 +39,47 @@
 	margin: 5px 0px 15px 0px;
 	text-align: center;
 	width: 100%;
-  }
-  
-  .logo-text span {
+}
+
+.logo-text span {
 	color: #000000;
-  }
-  
-  .profile-list {
+}
+
+.profile-list {
 	width: 340px;
 	background-color: #ffffff;
 	padding: 10px 20px 20px 20px;
-  }
-  
-  .logo {
+}
+
+.logo {
 	height: 80px;
 	margin-bottom: 10px;
-  }
-  
-  .text-container {
+}
+
+.text-container {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
 	margin-left: 5px;
-  }
-  
-  .text-name {
+}
+
+.text-name {
 	font-size: 17px;
 	display: flex;
 	text-overflow: ellipsis;
 	margin: 0px;
 	color: black; /* Default color for light mode */
-  }
-  
-  .text-position {
+}
+
+.text-position {
 	font-size: 12px;
 	display: flex;
 	text-overflow: ellipsis;
 	color: #7e7e7e;
 	margin: 0px;
-  }
-  
-  .profile-card {
+}
+
+.profile-card {
 	display: flex;
 	flex-direction: column;
 	padding: 5px;
@@ -87,36 +87,36 @@
 	border-radius: 13px;
 	border: 2px black solid;
 	background: #ffffff;
-  }
-  
-  .profile-content {
+}
+
+.profile-content {
 	display: flex;
 	flex: 1;
 	flex-direction: row;
 	align-items: center;
 	cursor: pointer;
-  }
-  
-  .profile-image {
+}
+
+.profile-image {
 	border-radius: 50%;
 	width: 50px;
 	height: 50px;
 	margin: 5px;
-  }
-  
-  .delete-button {
+}
+
+.delete-button {
 	background: none;
 	border: none;
 	cursor: pointer;
-  }
-  
-  .comment-button {
+}
+
+.comment-button {
 	background: none;
 	border: none;
 	cursor: pointer;
-  }
-  
-  .add-profile {
+}
+
+.add-profile {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -125,17 +125,17 @@
 	border-radius: 12px;
 	margin-top: 10px;
 	cursor: pointer;
-  }
-  
-  .add-profile button {
+}
+
+.add-profile button {
 	background: none;
 	border: none;
 	color: #707070;
 	font-size: 16px;
 	cursor: pointer;
-  }
-  
-  .comment-modal {
+}
+
+.comment-modal {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -143,9 +143,9 @@
 	background-color: #f0f0f0;
 	border-radius: 8px;
 	margin: 5px;
-  }
-  
-  .comment-textarea {
+}
+
+.comment-textarea {
 	display: flex;
 	margin-top: 3px;
 	height: 73px;
@@ -157,27 +157,27 @@
 	border: none;
 	outline: none;
 	resize: none;
-  }
-  
-  .textarea-functionalities {
+}
+
+.textarea-functionalities {
 	display: flex;
 	flex-direction: row;
 	width: 95%;
 	gap: 10px;
 	align-items: baseline;
-  }
-  
-  .empty-space {
+}
+
+.empty-space {
 	flex: 1;
-  }
-  
-  .comment-length {
+}
+
+.comment-length {
 	font-size: 14px;
 	color: #7e7e7e;
-  }
-  
-  .submit-button,
-  .discard-button {
+}
+
+.submit-button,
+.discard-button {
 	display: flex;
 	background: none;
 	flex-direction: row;
@@ -189,13 +189,13 @@
 	border-radius: 8px;
 	margin-bottom: 5px;
 	background-color: #46db55;
-  }
-  
-  .discard-button {
+}
+
+.discard-button {
 	background-color: #ee2d2d;
-  }
-  
-  .submit-button-text {
+}
+
+.submit-button-text {
 	display: flex;
 	flex: 1;
 	color: white;
@@ -203,42 +203,43 @@
 	font-weight: 500;
 	justify-content: center;
 	align-items: center;
-  }
-  
-  /* Dark mode styles */
-  body.dark-mode .app {
-	background-color: #000000; 
-  }
-  
-  body.dark-mode .logo-text {
-	color: #1f60c0;
-  }
-  
-  body.dark-mode .logo-text span {
+}
+
+/* Dark mode styles */
+body.dark-mode .logo-text span {
 	color: #ffffff;
-  }
-  
-  body.dark-mode .profile-list {
-	background-color: #000000; /* Set profile list background to LinkedIn's dark mode color */
-  }
-  
-  body.dark-mode .profile-card {
-	background: #1B1F23; /* Set profile card background to LinkedIn's dark mode color */
-  }
-  
-  body.dark-mode .text-name {
-	color: white; /* Color for dark mode */
-  }
-  
-  body.dark-mode .text-position {
-	color: #b0b0b0;
-  }
-  
-  body.dark-mode .comment-modal {
-	background-color: #3e3e3e;
-  }
-  
-  body.dark-mode .comment-textarea {
-	background-color: #3e3e3e;
-  }
-  
+}
+
+body.dark-mode .profile-list {
+	background-color: #000000;
+}
+
+body.dark-mode .profile-card {
+	background: #1b1f23;
+}
+
+body.dark-mode .text-name {
+	color: white;
+}
+
+body.dark-mode .text-position {
+	color: #a5a5a5;
+}
+
+body.dark-mode .comment-length,
+body.dark-mode textarea::placeholder {
+	color: rgb(255, 255, 255, 0.6);
+}
+
+body.dark-mode .comment-modal {
+	background-color: #515961;
+}
+
+body.dark-mode .comment-textarea {
+	background-color: #515961;
+	color: white;
+}
+
+body.dark-mode .placeholder-image {
+	stroke: white;
+}
