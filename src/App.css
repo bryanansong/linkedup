@@ -12,7 +12,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 0 20px; /* Add some padding for better spacing */
+	padding: 0 20px;
 }
 
 .header {
@@ -68,7 +68,7 @@
 	display: flex;
 	text-overflow: ellipsis;
 	margin: 0px;
-	color: black; /* Default color for light mode */
+	color: black;
 }
 
 .text-position {
@@ -292,4 +292,9 @@ body.dark-mode .add-profile:hover button {
 
 body.dark-mode .add-profile:hover {
 	border: 2px dashed white;
+}
+
+body.dark-mode *,
+body.light-mode * {
+	transition: all 0.5s ease-in-out;
 }

@@ -11,8 +11,11 @@ function App() {
 	const toggleDarkMode = () => {
 		const newDarkModeState = !isDarkMode;
 		setIsDarkMode(newDarkModeState);
-		// TODO: Add toast for dark mode toggle
-		document.body.classList.toggle("dark-mode", newDarkModeState);
+		toast.success(`${newDarkModeState ? "Dark mode" : "Light mode"}`, {
+			icon: `${newDarkModeState ? "🌙" : "☀️"}`,
+		});
+		document.body.classList.remove(isDarkMode ? "dark-mode" : "light-mode");
+		document.body.classList.add(isDarkMode ? "light-mode" : "dark-mode");
 		chrome.storage.sync.set({ isDarkMode: newDarkModeState });
 	};
 
@@ -45,7 +48,6 @@ function App() {
 			}
 		});
 
-		// Retrieve the dark mode setting from Chrome storage
 		chrome.storage.sync.get(["isDarkMode"], (result) => {
 			if (result.isDarkMode !== undefined) {
 				setIsDarkMode(result.isDarkMode);
