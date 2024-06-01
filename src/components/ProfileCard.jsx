@@ -11,6 +11,7 @@ const ProfileCard = ({ profile, index, handleDelete, updateProfileData }) => {
 	};
 
 	const closeCommentModal = () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
 		setCommentModal(false);
 	};
 
