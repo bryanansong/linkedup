@@ -1,12 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import "./App.css";
 import ProfileCard from "./components/ProfileCard";
 import Header from "./components/Header";
 import toast, { Toaster } from "react-hot-toast";
 
-const initialProfileData = [];
-
 function App() {
-	const [profileData, setProfileData] = useState(initialProfileData);
+	const [profileData, setProfileData] = useState([]);
+	const [isDarkMode, setIsDarkMode] = useState(false);
+
+	const toggleDarkMode = () => {
+		const newDarkModeState = !isDarkMode;
+		setIsDarkMode(newDarkModeState);
+		toast.success(`${newDarkModeState ? "Dark mode" : "Light mode"}`, {
+			icon: `${newDarkModeState ? "🌙" : "☀️"}`,
+		});
+		document.body.classList.remove(isDarkMode ? "dark-mode" : "light-mode");
+		document.body.classList.add(isDarkMode ? "light-mode" : "dark-mode");
+		chrome.storage.sync.set({ isDarkMode: newDarkModeState });
+	};
+
 	const toastOptions = {
 		className: "",
 		style: {
@@ -35,10 +47,17 @@ function App() {
 				setProfileData(data.profileData);
 			}
 		});
+
+		chrome.storage.sync.get(["isDarkMode"], (result) => {
+			if (result.isDarkMode !== undefined) {
+				setIsDarkMode(result.isDarkMode);
+				document.body.classList.toggle("dark-mode", result.isDarkMode);
+			}
+		});
 	}, []);
 
 	useEffect(() => {
-		if (profileData !== initialProfileData) {
+		if (!(profileData.length < 1)) {
 			chrome.storage.sync.set({ profileData });
 		}
 	}, [profileData]);
@@ -185,7 +204,7 @@ function App() {
 			/>
 			<div className="profile-list">
 				<div className="header">
-					<Header />
+					<Header toggleDarkMode={toggleDarkMode} />
 				</div>
 				{profileData.map((profile, index) => (
 					<ProfileCard

@@ -1,3 +1,4 @@
+/* Default light mode styles */
 .app {
 	display: flex;
 	justify-content: center;
@@ -6,10 +7,28 @@
 	background-color: #ffffff;
 }
 
+.header-container {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 20px;
+}
+
 .header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+	position: relative;
+}
+
+.dark-mode-toggle {
+	position: absolute;
+	left: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 
 .logo-text {
@@ -18,6 +37,8 @@
 	font-weight: bolder;
 	font-family: sans-serif;
 	margin: 5px 0px 15px 0px;
+	text-align: center;
+	width: 100%;
 }
 
 .logo-text span {
@@ -47,6 +68,7 @@
 	display: flex;
 	text-overflow: ellipsis;
 	margin: 0px;
+	color: black;
 }
 
 .text-position {
@@ -223,4 +245,56 @@
 	justify-content: center;
 	border-radius: 8px;
 	margin: 5px;
+}
+
+/* Dark mode styles */
+body.dark-mode .logo-text span {
+	color: #ffffff;
+}
+
+body.dark-mode .profile-list {
+	background-color: #000000;
+}
+
+body.dark-mode .profile-card {
+	background: #1b1f23;
+}
+
+body.dark-mode .text-name {
+	color: white;
+}
+
+body.dark-mode .text-position {
+	color: #a5a5a5;
+}
+
+body.dark-mode .comment-length,
+body.dark-mode textarea::placeholder {
+	color: rgb(255, 255, 255, 0.6);
+}
+
+body.dark-mode .comment-modal {
+	background-color: #515961;
+}
+
+body.dark-mode .comment-textarea {
+	background-color: #515961;
+	color: white;
+}
+
+body.dark-mode .placeholder-image {
+	stroke: white;
+}
+
+body.dark-mode .add-profile:hover button {
+	color: white;
+}
+
+body.dark-mode .add-profile:hover {
+	border: 2px dashed white;
+}
+
+body.dark-mode *,
+body.light-mode * {
+	transition: all 0.5s ease-in-out;
 }
