@@ -3,6 +3,7 @@ import "./App.css";
 import ProfileCard from "./components/ProfileCard";
 import Header from "./components/Header";
 import toast, { Toaster } from "react-hot-toast";
+import OutreachMessagesButton from "./components/OutreachMessagesButton";
 
 function App() {
 	const [profileData, setProfileData] = useState([]);
@@ -206,6 +207,7 @@ function App() {
 				<div className="header">
 					<Header toggleDarkMode={toggleDarkMode} />
 				</div>
+				<OutreachMessagesButton />
 				{profileData.map((profile, index) => (
 					<ProfileCard
 						key={index}
