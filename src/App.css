@@ -7,28 +7,22 @@
 	background-color: #ffffff;
 }
 
+.profile-list {
+	width: 350px;
+	background-color: #ffffff;
+	padding: 10px 20px 20px 20px;
+}
+
 .header-container {
-	width: 100%;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	width: 100%;
+	flex: 1;
 	padding: 0 20px;
 }
 
 .header {
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	position: relative;
-}
-
-.dark-mode-toggle {
-	position: absolute;
-	left: 0;
-	background: none;
-	border: none;
-	cursor: pointer;
 }
 
 .logo-text {
@@ -36,7 +30,7 @@
 	color: #1f60c0;
 	font-weight: bolder;
 	font-family: sans-serif;
-	margin: 5px 0px 15px 0px;
+	margin: 0px 0px 10px 0px;
 	text-align: center;
 	width: 100%;
 }
@@ -45,15 +39,27 @@
 	color: #000000;
 }
 
-.profile-list {
-	width: 340px;
-	background-color: #ffffff;
-	padding: 10px 20px 20px 20px;
-}
-
 .logo {
 	height: 80px;
 	margin-bottom: 10px;
+}
+
+.outreach-messages-button {
+	display: flex;
+	border: 2px #1f60c0 solid;
+	color: black;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	padding: 3px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+}
+
+.outreach-messages-button:hover {
+	cursor: pointer;
 }
 
 .text-container {
@@ -104,13 +110,9 @@
 	margin: 5px;
 }
 
+.comment-button,
+.dark-mode-toggle,
 .delete-button {
-	background: none;
-	border: none;
-	cursor: pointer;
-}
-
-.comment-button {
 	background: none;
 	border: none;
 	cursor: pointer;
@@ -294,7 +296,12 @@ body.dark-mode .add-profile:hover {
 	border: 2px dashed white;
 }
 
+body.dark-mode .outreach-messages-button {
+	color: white;
+	background-color: #1f60c0;
+}
+
 body.dark-mode *,
 body.light-mode * {
-	transition: all 0.5s ease-in-out;
+	transition: all 0.35s ease-in-out;
 }
