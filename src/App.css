@@ -271,10 +271,7 @@
 }
 
 /* Dark mode styles */
-body.dark-mode .logo-text span {
-	color: #ffffff;
-}
-
+body.dark-mode .app,
 body.dark-mode .profile-list {
 	background-color: #000000;
 }
@@ -283,7 +280,9 @@ body.dark-mode .profile-card {
 	background: #1b1f23;
 }
 
-body.dark-mode .text-name {
+body.dark-mode .text-name,
+body.dark-mode .add-profile:hover button,
+body.dark-mode .logo-text span {
 	color: white;
 }
 
@@ -307,10 +306,6 @@ body.dark-mode .comment-textarea {
 
 body.dark-mode .placeholder-image {
 	stroke: white;
-}
-
-body.dark-mode .add-profile:hover button {
-	color: white;
 }
 
 body.dark-mode .add-profile:hover {
