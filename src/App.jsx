@@ -119,16 +119,35 @@ function App() {
 							"#profile-content > div > div > div > div > main > section > div > div > div > div > span > a > h1";
 						const imageSelector =
 							"#profile-content > div > div > div > div > main > section > div > div > div > div > button > img";
-						const companySelector =
-							"#profile-content > div > div > div > div > main > section > div > ul > li > div > div > div > div > span > span";
 						const connectionDistanceSelector = "span.dist-value";
 
 						const name = document
 							.querySelector(nameSelector)
 							?.textContent.trim();
 						const imageUrl = document.querySelector(imageSelector)?.src;
+
+						// Extract company and position
+						const experienceSection =
+							document.getElementById("experience");
+						const mainContainer = experienceSection.parentElement;
+
+						const getPositionText = (selector) =>
+							mainContainer
+								.querySelector(selector)
+								?.textContent?.trim() || "";
+
+						const standardPosition = getPositionText(
+							"div > ul > li:nth-child(1) > div > div > div > div > span > span"
+						);
+						const multiplePositions = getPositionText(
+							"div > ul > li:nth-child(1) > div > div > div > a > div > div > div > div > span"
+						);
+
 						const company =
-							document.querySelector(companySelector)?.textContent;
+							standardPosition ||
+							multiplePositions ||
+							"No company found";
+
 						const connectionDistance = document
 							.querySelector(connectionDistanceSelector)
 							?.textContent.trim();
