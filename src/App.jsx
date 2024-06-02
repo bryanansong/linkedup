@@ -5,8 +5,10 @@ import Header from "./components/Header";
 import toast, { Toaster } from "react-hot-toast";
 import OutreachMessagesButton from "./components/OutreachMessagesButton";
 
+const initialProfileData = [];
+
 function App() {
-	const [profileData, setProfileData] = useState([]);
+	const [profileData, setProfileData] = useState(initialProfileData);
 	const [isDarkMode, setIsDarkMode] = useState(false);
 
 	const toggleDarkMode = () => {
@@ -58,7 +60,7 @@ function App() {
 	}, []);
 
 	useEffect(() => {
-		if (!(profileData.length < 1)) {
+		if (profileData !== initialProfileData) {
 			chrome.storage.sync.set({ profileData });
 		}
 	}, [profileData]);
