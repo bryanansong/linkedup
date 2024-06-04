@@ -1,7 +1,7 @@
 {
 	"manifest_version": 3,
 	"name": "LinkedUp",
-	"version": "2.7.0",
+	"version": "2.7.2",
 	"description": "Save and manage LinkedIn profiles effortlessly with LinkedUp: add, view, and navigate profiles, all synced across your devices",
 	"action": { "default_popup": "index.html" },
 	"permissions": ["storage", "tabs", "scripting"],
